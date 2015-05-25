@@ -92,18 +92,35 @@
 	</map-source>
 
 
-	<map-source name="google_hybrid" type="google" google-type="hybrid">
+	<map-source name="google_physical" type="google" google-type="physical">
 		<layer name="all" status="on"/>
+	</map-source>
+
+	<map-source name="google_streets" type="google" google-type="streets">
+		<layer name="all"/>
+	</map-source>
+
+	<map-source name="google_hybrid" type="google" google-type="hybrid">
+		<layer name="all"/>
+	</map-source>
+
+	<map-source name="google_satellite" type="google" google-type="satellite">
+		<layer name="all"/>
 	</map-source>
 
 	<map-source name="fmlnv1v2" type="mapserver" projection="EPSG:4326">
 	<file>./demo/parcels/v1greatherthanv2.map</file>
 		<param name="format" value="image/png"/>
-		<layer name="relafmlnv2v1" status="on"/>
+		<layer name="presidential_election_2014" status="on"/>
 	</map-source>
 
-
-
+	<map-source name="election_2015" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/election_2015.map</file>
+		<param name="format" value="image/png"/>
+		<layer name="legislative_election_2015"/>
+		<layer name="municipal_election_2015"/>
+		<layer name="parliament_election_2015"/>
+	</map-source>
 
 	<service name="print" title="Print Map" keep-others="true">
 		<step type="input">
@@ -279,8 +296,29 @@
 		The catalog defines how the layers will be displayed in the catalog tab.
 	-->
 	<catalog>
-		<group title="Presidenciales 2014" expand="true">
-			<layer title="relafmlnv2v1" src="fmlnv1v2/relafmlnv2v1" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+		<group title="Elecciones" expand="true">
+      <group title="2014" expand="true">
+        <group title="Presidenciales" expand="true">
+          <layer title="Sectores donde tuvo más votos en primera vuelta" src="fmlnv1v2/presidential_election_2014" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+      </group>
+      <group title="2015" expand="false">
+        <group title="Asamblea" expand="false">
+          <layer title="Sectores" src="election_2015/legislative_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+        <group title="Municipales" expand="false">
+          <layer title="Sectores" src="election_2015/municipal_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+        <group title="Parlamento" expand="false">
+          <layer title="Sectores" src="election_2015/parliament_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+      </group>
+		</group>
+		<group title="Mapa de google" expand="false" multiple="false">
+			<layer title="Google Streets" src="google_streets/all" legend="false" fade="false" unfade="false"/>
+			<layer title="Google Physical" src="google_physical/all" legend="false" fade="false" unfade="false"/>
+			<layer title="Google Hybrid" src="google_hybrid/all" legend="false" fade="false" unfade="false"/>
+			<layer title="Google Satellite" src="google_satellite/all" legend="false" fade="false" unfade="false"/>
 		</group>
 	</catalog>
 

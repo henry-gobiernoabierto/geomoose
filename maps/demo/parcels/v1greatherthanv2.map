@@ -39,20 +39,20 @@ MAP
   END
 
   LAYER
-    NAME "relafmlnv2v1"
+    NAME "presidential_election_2014"
     TYPE POLYGON
 
     CONNECTION "dbname='mapserver' port=5432 user='postgres' sslmode=disable"
     CONNECTIONTYPE POSTGIS
-    DATA 'geom FROM relafmlnv2v1 USING UNIQUE gid USING SRID=4326'
-    FILTER '("fmln_v2" < "fmln_v1")'
+    DATA 'geom FROM presidential_election_2014 USING UNIQUE gid USING SRID=4326'
+    #FILTER '("fmln_v2" < "fmln_v1")'
 
     #HEADER   "templates/header.html"
     #TEMPLATE "templates/content.html"
     #FOOTER "templates/footer.html"
 
     METADATA
-      "wms_title" "relafmlnv2v1"
+      "wms_title" "presidential_election_2014"
       "wms_abstract" "Municipios donde el fmln tuvo mas votos en la primera vuelta"
       "wms_keywordlist" "votos, presidenciales"
       "wms_srs"   "EPSG:4326 EPSG:900913"
@@ -77,7 +77,7 @@ MAP
     UNITS dd
     SIZEUNITS PIXELS
     CLASS
-      NAME 'Centros de votacion'
+      NAME 'Sectores'
       STYLE
         COLOR 251 156 239
         OUTLINECOLOR 0 0 0
