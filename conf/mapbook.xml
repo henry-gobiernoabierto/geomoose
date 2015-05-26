@@ -114,11 +114,21 @@
 		<layer name="presidential_election_2014" status="on"/>
 	</map-source>
 
-	<map-source name="election_2015" type="mapserver" projection="EPSG:4326">
-	<file>./demo/parcels/election_2015.map</file>
+	<map-source name="legislative_election_2015" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/legislative_election_2015.map</file>
 		<param name="format" value="image/png"/>
 		<layer name="legislative_election_2015"/>
+	</map-source>
+
+	<map-source name="municipal_election_2015" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/municipal_election_2015.map</file>
+		<param name="format" value="image/png"/>
 		<layer name="municipal_election_2015"/>
+	</map-source>
+
+	<map-source name="parliament_election_2015" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/parliament_election_2015.map</file>
+		<param name="format" value="image/png"/>
 		<layer name="parliament_election_2015"/>
 	</map-source>
 
@@ -304,13 +314,13 @@
       </group>
       <group title="2015" expand="false">
         <group title="Asamblea" expand="false">
-          <layer title="Sectores" src="election_2015/legislative_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+          <layer title="Sectores" src="legislative_election_2015/legislative_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
         </group>
         <group title="Municipales" expand="false">
-          <layer title="Sectores" src="election_2015/municipal_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+          <layer title="Sectores" src="municipal_election_2015/municipal_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
         </group>
         <group title="Parlamento" expand="false">
-          <layer title="Sectores" src="election_2015/parliament_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
+          <layer title="Sectores" src="parliament_election_2015/parliament_election_2015" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
         </group>
       </group>
 		</group>

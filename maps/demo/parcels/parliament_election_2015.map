@@ -1,5 +1,5 @@
 MAP
-  NAME "fmlnv1v2"
+  NAME "parliament_election_2015"
   SIZE 800 650
   STATUS ON
   EXTENT -90.191281 12.706798 -87.623150 14.902626
@@ -9,10 +9,10 @@ MAP
 
   WEB
     METADATA
-      "wms_title" "fmlnv1v2"
-      "wms_abstract" "Municipios donde el fmln tuvo mas votos en la primera vuelta"
-      "wms_keywordlist" "votos, presidenciales"
-      "wms_onlineresource" "http://localhost/cgi-bin/mapserv?map=/var/www/html/geomoose/maps/demo/parcels/v1greatherthanv2.map&"
+      "wms_title" "parliament_election_2015"
+      "wms_abstract" ""
+      "wms_keywordlist" "votos, elecciones"
+      "wms_onlineresource" "http://localhost/cgi-bin/mapserv?map=/var/www/html/geomoose/maps/demo/parcels/parliament_election_2015.map&"
       "wms_srs" "EPSG:4326 EPSG:900913"
       'wms_feature_info_mime_type' 'text/html'
       'queryable'          'true'
@@ -39,12 +39,12 @@ MAP
   END
 
   LAYER
-    NAME "presidential_election_2014"
+    NAME "parliament_election_2015"
     TYPE POLYGON
 
     CONNECTION "dbname='mapserver' port=5432 user='postgres' sslmode=disable"
     CONNECTIONTYPE POSTGIS
-    DATA 'geom FROM presidential_election_2014 USING UNIQUE gid USING SRID=4326'
+    DATA 'geom FROM parliament_election_2015 USING UNIQUE gid USING SRID=4326'
     #FILTER '("fmln_v2" < "fmln_v1")'
 
     #HEADER   "templates/header.html"
@@ -52,9 +52,9 @@ MAP
     #FOOTER "templates/footer.html"
 
     METADATA
-      "wms_title" "presidential_election_2014"
-      "wms_abstract" "Municipios donde el fmln tuvo mas votos en la primera vuelta"
-      "wms_keywordlist" "votos, presidenciales"
+      "wms_title" "parliament_election_2015"
+      "wms_abstract" ""
+      "wms_keywordlist" "votos, elecciones"
       "wms_srs"   "EPSG:4326 EPSG:900913"
       "wms_enable_request" "*"
       'wms_include_items' 'all'
@@ -71,7 +71,7 @@ MAP
 
     EXTENT -90.191281 12.706798 -87.623150 14.902626
     OPACITY 90
-    LABELITEM "centro_e_1"
+    LABELITEM "centro"
     LABELMAXSCALEDENOM 80000
     #LABELCACHE ON
     UNITS dd
@@ -79,7 +79,7 @@ MAP
     CLASS
       NAME 'Sectores'
       STYLE
-        COLOR 251 156 239
+        COLOR 230 230 250
         OUTLINECOLOR 0 0 0
         WIDTH 0.26
       END # STYLE
