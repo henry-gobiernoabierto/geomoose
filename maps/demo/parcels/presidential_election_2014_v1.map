@@ -1,5 +1,5 @@
 MAP
-  NAME "fmlnv1v2"
+  NAME "presidential_election_2014_v1"
   SIZE 800 650
   STATUS ON
   EXTENT -90.191281 12.706798 -87.623150 14.902626
@@ -9,10 +9,10 @@ MAP
 
   WEB
     METADATA
-      "wms_title" "fmlnv1v2"
-      "wms_abstract" "Municipios donde el fmln tuvo mas votos en la primera vuelta"
+      "wms_title" "presidential_election_2014_v1"
+      "wms_abstract" ""
       "wms_keywordlist" "votos, presidenciales"
-      "wms_onlineresource" "http://localhost/cgi-bin/mapserv?map=/var/www/html/geomoose/maps/demo/parcels/v1greatherthanv2.map&"
+      "wms_onlineresource" "http://localhost/cgi-bin/mapserv?map=/var/www/html/geomoose/maps/demo/parcels/presidential_election_2014_v1.map&"
       "wms_srs" "EPSG:4326 EPSG:900913"
       'wms_feature_info_mime_type' 'text/html'
       'queryable'          'true'
@@ -39,21 +39,18 @@ MAP
   END
 
   LAYER
-    NAME "presidential_election_2014"
+    NAME "presidential_election_2014_v1"
     TYPE POLYGON
 
     CONNECTION "dbname='mapserver' port=5432 user='postgres' sslmode=disable"
     CONNECTIONTYPE POSTGIS
     DATA 'geom FROM presidential_election_2014 USING UNIQUE gid USING SRID=4326'
-    #FILTER '("fmln_v2" < "fmln_v1")'
 
-    #HEADER   "templates/header.html"
-    #TEMPLATE "templates/content.html"
-    #FOOTER "templates/footer.html"
+    TEMPLATE "templates/presidential_election_v1_2014.html"
 
     METADATA
       "wms_title" "presidential_election_2014"
-      "wms_abstract" "Municipios donde el fmln tuvo mas votos en la primera vuelta"
+      "wms_abstract" ""
       "wms_keywordlist" "votos, presidenciales"
       "wms_srs"   "EPSG:4326 EPSG:900913"
       "wms_enable_request" "*"
@@ -76,25 +73,56 @@ MAP
     #LABELCACHE ON
     UNITS dd
     SIZEUNITS PIXELS
+
     CLASS
-      NAME 'Sectores'
+      NAME 'FMLN'
       STYLE
-        COLOR 251 156 239
+        COLOR 255 0 0
         OUTLINECOLOR 0 0 0
         WIDTH 0.26
       END # STYLE
-      LABEL
-        COLOR 0 0 0
-        FONT "vera_sans"
-        TYPE TRUETYPE
-        POSITION UC
-        PARTIALS TRUE
-        SIZE 7
-        BUFFER 1
-        OUTLINECOLOR 255 255 255
-      END # LABEL
+      EXPRESSION (([fmln_v1] > [arena_v1]) AND ([fmln_v1] > [unidad_v1]) AND ([fmln_v1] > [fps_v1]) AND ([fmln_v1] > [psp_v1]))
     END # CLASS
 
+    CLASS
+      NAME 'ARENA'
+      STYLE
+        COLOR 0 0 255
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([arena_v1] > [fmln_v1]) AND ([arena_v1] > [unidad_v1]) AND ([arena_v1] > [fps_v1]) AND ([arena_v1] > [psp_v1]))
+    END # CLASS
+
+    CLASS
+      NAME 'UNIDAD'
+      STYLE
+        COLOR 255 165 0
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([unidad_v1] > [fmln_v1]) AND ([unidad_v1] > [arena_v1]) AND ([unidad_v1] > [fps_v1]) AND ([unidad_v1] > [psp_v1]))
+    END # CLASS
+
+    CLASS
+      NAME 'FPS'
+      STYLE
+        COLOR 0 128 0
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([fps_v1] > [fmln_v1]) AND ([fps_v1] > [arena_v1]) AND ([fps_v1] > [unidad_v1]) AND ([fps_v1] > [psp_v1]))
+    END # CLASS
+
+    CLASS
+      NAME 'PSP'
+      STYLE
+        COLOR 255 255 0
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([psp_v1] > [fmln_v1]) AND ([psp_v1] > [arena_v1]) AND ([psp_v1] > [unidad_v1]) AND ([psp_v1] > [fps_v1]))
+    END # CLASS
 
 
   END # LAYER

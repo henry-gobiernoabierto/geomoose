@@ -45,11 +45,8 @@ MAP
     CONNECTION "dbname='mapserver' port=5432 user='postgres' sslmode=disable"
     CONNECTIONTYPE POSTGIS
     DATA 'geom FROM municipal_election_2015 USING UNIQUE gid USING SRID=4326'
-    #FILTER '("fmln_v2" < "fmln_v1")'
 
-    #HEADER   "templates/header.html"
-    #TEMPLATE "templates/content.html"
-    #FOOTER "templates/footer.html"
+    #TEMPLATE "templates/legislative_election_2015.html"
 
     METADATA
       "wms_title" "municipal_election_2015"
@@ -76,25 +73,107 @@ MAP
     #LABELCACHE ON
     UNITS dd
     SIZEUNITS PIXELS
+
+
     CLASS
-      NAME 'Sectores'
+      NAME 'FMLN'
       STYLE
-        COLOR 106 90 205
+        COLOR 255 0 0
         OUTLINECOLOR 0 0 0
         WIDTH 0.26
       END # STYLE
-      LABEL
-        COLOR 0 0 0
-        FONT "vera_sans"
-        TYPE TRUETYPE
-        POSITION UC
-        PARTIALS TRUE
-        SIZE 7
-        BUFFER 1
-        OUTLINECOLOR 255 255 255
-      END # LABEL
+      EXPRESSION (([fmln] > [arena]) AND ([fmln] > [gana]) AND ([fmln] > [pcn]) AND ([fmln] > [pdc]) AND ([fmln] > [cd]) AND ([fmln] > [ds]) AND ([fmln] > [psd]) AND ([fmln] > [psp]) AND ([fmln] > [fps]))
     END # CLASS
 
+    CLASS
+      NAME 'ARENA'
+      STYLE
+        COLOR 0 0 255
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([arena] > [fmln]) AND ([arena] > [gana]) AND ([arena] > [pcn]) AND ([arena] > [pdc]) AND ([arena] > [cd]) AND ([arena] > [ds]) AND ([arena] > [psd]) AND ([arena] > [psp]) AND ([arena] > [fps]))
+    END # CLASS
+
+    CLASS
+      NAME 'GANA'
+      STYLE
+        COLOR 255 165 0
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([gana] > [fmln]) AND ([gana] > [arena]) AND ([gana] > [pcn]) AND ([gana] > [pdc]) AND ([gana] > [cd]) AND ([gana] > [ds]) AND ([gana] > [psd]) AND ([gana] > [psp]) AND ([gana] > [fps]))
+    END # CLASS
+
+    CLASS
+      NAME 'PCN'
+      STYLE
+        COLOR 255 255 255
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([pcn] > [fmln]) AND ([pcn] > [arena]) AND ([pcn] > [gana]) AND ([pcn] > [pdc]) AND ([pcn] > [cd]) AND ([pcn] > [ds]) AND ([pcn] > [psd]) AND ([pcn] > [psp]) AND ([pcn] > [fps]))
+    END # CLASS
+
+    CLASS
+      NAME 'PDC'
+      STYLE
+        COLOR 0 128 0
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([pdc] > [fmln]) AND ([pdc] > [arena]) AND ([pdc] > [gana]) AND ([pdc] > [pcn]) AND ([pdc] > [cd]) AND ([pdc] > [ds]) AND ([pdc] > [psd]) AND ([pdc] > [psp]) AND ([pdc] > [fps]))
+    END # CLASS
+
+    CLASS
+      NAME 'DS'
+      STYLE
+        COLOR 0 255 0
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([ds] > [fmln]) AND ([ds] > [arena]) AND ([ds] > [gana]) AND ([ds] > [pcn]) AND ([ds] > [cd]) AND ([ds] > [pdc]) AND ([ds] > [psd]) AND ([ds] > [psp]) AND ([ds] > [fps]))
+    END # CLASS
+
+    CLASS
+      NAME 'PSD'
+      STYLE
+        COLOR 255 20 147
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([psd] > [fmln]) AND ([psd] > [arena]) AND ([psd] > [gana]) AND ([psd] > [pcn]) AND ([psd] > [cd]) AND ([psd] > [pdc]) AND ([psd] > [ds]) AND ([psd] > [psp]) AND ([psd] > [fps]))
+    END # CLASS
+
+    CLASS
+      NAME 'FPS'
+      STYLE
+        COLOR 192 192 192
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([fps] > [fmln]) AND ([fps] > [arena]) AND ([fps] > [gana]) AND ([fps] > [pcn]) AND ([fps] > [cd]) AND ([fps] > [pdc]) AND ([fps] > [ds]) AND ([fps] > [psp]) AND ([fps] > [psd]))
+    END # CLASS
+
+    CLASS
+      NAME 'PSP'
+      STYLE
+        COLOR 135 206 235
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([psp] > [fmln]) AND ([psp] > [arena]) AND ([psp] > [gana]) AND ([psp] > [pcn]) AND ([psp] > [cd]) AND ([psp] > [pdc]) AND ([psp] > [ds]) AND ([psp] > [psp]) AND ([psp] > [psd]))
+    END # CLASS
+
+    CLASS
+      NAME 'CD'
+      STYLE
+        COLOR 255 255 0
+        OUTLINECOLOR 0 0 0
+        WIDTH 0.26
+      END # STYLE
+      EXPRESSION (([cd] > [fmln]) AND ([cd] > [arena]) AND ([cd] > [gana]) AND ([cd] > [pcn]) AND ([cd] > [cd]) AND ([cd] > [pdc]) AND ([cd] > [ds]) AND ([cd] > [psp]) AND ([cd] > [psd]))
+    END # CLASS
 
 
   END # LAYER
