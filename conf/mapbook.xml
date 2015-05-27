@@ -12,10 +12,9 @@
 
 		<param name="zoomto"><![CDATA[
 		{
-			"Jump To:" : {
-				"World" : [-20614760.777156,1751325.1919492,-1927436.1053437,7915207.1517617],
-				"Parcel Data" : [-9966725,1622278,-9789086,1479493],
-				"Full State of MN" : [-10742765,5398288,-9920914,6310641]
+			"Ir a:" : {
+				"El mundo" : [-20614760.777156,1751325.1919492,-1927436.1053437,7915207.1517617],
+				"El salvador" : [-9966725,1622278,-9789086,1479493]
 			}
 		}
 		]]></param>
@@ -137,6 +136,14 @@
 		<param name="format" value="image/png"/>
 		<layer name="parliament_election_2015"/>
 	</map-source>
+
+	<!-- MINSAL -->
+	<map-source name="hospitales" type="wms" tiled="false" projection="EPSG:4326">
+	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/wms/hospitales.map</url>
+	        <layer name="hospitales"/>
+	</map-source>
+
+	<!-- FIN MINSAL -->
 
 	<service name="print" title="Print Map" keep-others="true">
 		<step type="input">
@@ -330,6 +337,9 @@
           <layer title="Sectores" src="parliament_election_2015/parliament_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
         </group>
       </group>
+		</group>
+		<group title="MINSAL" expand="false">
+			<layer title="Hospitales" src="hospitales/hospitales" popups="false" show-legend="true" minscale="0" metadata="false" refresh="true" />
 		</group>
 		<group title="Mapa de google" expand="false" multiple="false">
 			<layer title="Google Streets" src="google_streets/all" legend="false" fade="false" unfade="false"/>
