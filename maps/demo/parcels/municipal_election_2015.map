@@ -46,7 +46,7 @@ MAP
     CONNECTIONTYPE POSTGIS
     DATA 'geom FROM municipal_election_2015 USING UNIQUE gid USING SRID=4326'
 
-    #TEMPLATE "templates/legislative_election_2015.html"
+    TEMPLATE "templates/municipal_election_2015.html"
 
     METADATA
       "wms_title" "municipal_election_2015"
@@ -68,12 +68,8 @@ MAP
 
     EXTENT -90.191281 12.706798 -87.623150 14.902626
     OPACITY 90
-    LABELITEM "centro"
-    LABELMAXSCALEDENOM 80000
-    #LABELCACHE ON
     UNITS dd
     SIZEUNITS PIXELS
-
 
     CLASS
       NAME 'FMLN'
