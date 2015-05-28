@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if ( isset($_SESSION['user']) ) {
+    $_SESSION['settings'] = 'internal_settings.ini';
+  }
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

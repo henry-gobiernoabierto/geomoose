@@ -7,7 +7,7 @@
 			<a target="_blank" href="http://www.mapserver.org">MapServer</a> |
 			<a target="_blank" href="http://www.openlayers.org">OpenLayers</a> |
 			<a target="_blank" href="http://www.dojotoolkit.org">Dojo</a>
-      <div style="float: right; margin-right: 1em;"><a href="php/login.php">Ingresar</a></div>
+      <div style="float: right; margin-right: 1em;"><a href="php/logout.php">Salir</a></div>
 		]]></param>
 		<param name="projection">EPSG:3857</param>
 
@@ -108,22 +108,52 @@
 		<layer name="all"/>
 	</map-source>
 
+	<map-source name="presidential_election_2014_v1" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/presidential_election_2014_v1.map</file>
+		<param name="format" value="image/png"/>
+		<layer name="presidential_election_2014_v1" status="off"/>
+	</map-source>
+
+	<map-source name="presidential_election_2014_v2" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/presidential_election_2014_v2.map</file>
+		<param name="format" value="image/png"/>
+		<layer name="presidential_election_2014_v2" status="on"/>
+	</map-source>
+
+	<map-source name="legislative_election_2015" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/legislative_election_2015.map</file>
+		<param name="format" value="image/png"/>
+		<layer name="legislative_election_2015"/>
+	</map-source>
+
+	<map-source name="municipal_election_2015" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/municipal_election_2015.map</file>
+		<param name="format" value="image/png"/>
+		<layer name="municipal_election_2015"/>
+	</map-source>
+
+	<map-source name="parliament_election_2015" type="mapserver" projection="EPSG:4326">
+	<file>./demo/parcels/parliament_election_2015.map</file>
+		<param name="format" value="image/png"/>
+		<layer name="parliament_election_2015"/>
+	</map-source>
+
 	<!-- MINSAL -->
 	<map-source name="hospitalesb" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalesb.map</url>
-	        <layer name="hospitalesb" status="on"/>
+	        <layer name="hospitalesb"/>
 	</map-source>
 	<map-source name="hospitalesd" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalesd.map</url>
-	        <layer name="hospitalesd" status="on"/>
+	        <layer name="hospitalesd"/>
 	</map-source>
 	<map-source name="hospitalesr" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalesr.map</url>
-	        <layer name="hospitalesr" status="on"/>
+	        <layer name="hospitalesr"/>
 	</map-source>
 	<map-source name="hospitalese" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalese.map</url>
-	        <layer name="hospitalese" status="on"/>
+	        <layer name="hospitalese"/>
 	</map-source>
 	<map-source name="ucsfb" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/ucsfb.map</url>
@@ -393,8 +423,27 @@
 		The catalog defines how the layers will be displayed in the catalog tab.
 	-->
 	<catalog>
+		<group title="Elecciones" expand="true">
+      <group title="2014" expand="true">
+        <group title="Presidenciales" expand="true">
+          <layer title="Primera vuelta - mayor cantidad de votos" src="presidential_election_2014_v1/presidential_election_2014_v1" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+          <layer title="Segunda vuelta - mayor cantidad de votos" src="presidential_election_2014_v2/presidential_election_2014_v2" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+      </group>
+      <group title="2015" expand="false">
+        <group title="Asamblea" expand="false">
+          <layer title="Sectores" src="legislative_election_2015/legislative_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+        <group title="Municipales" expand="false">
+          <layer title="Sectores" src="municipal_election_2015/municipal_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+        <group title="Parlamento" expand="false">
+          <layer title="Sectores" src="parliament_election_2015/parliament_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+      </group>
+		</group>
     <!-- CAPAS MINSAL -->
-		<group title="Capas MINSAL">
+		<group title="Capas MINSAL" expand="false">
   		<group title="Nivel administrativo">
   			<layer title="Nivel superior" src="oficinas/oficinas" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
   			<layer title="Direcciones Regionales" src="regionales/regionales" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>

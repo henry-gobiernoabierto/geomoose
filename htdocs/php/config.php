@@ -40,6 +40,8 @@ THE SOFTWARE.*/
  * cannot be avoided
  */
 
+session_start();
+
 if(!extension_loaded('gd') && !extension_loaded('gd2')) {
 #	dl('php_gd2.'.PHP_SHLIB_SUFFIX);
 }
@@ -56,15 +58,23 @@ if(!extension_loaded('MapScript')) {
 $CONFIGURATION = parse_ini_file('../../conf/settings.ini');
 
 function parseLocalConf() {
-	global $CONFIGURATION;
-	$local_conf = array();
-	try {
-		$local_conf = parse_ini_file('../../conf/local_settings.ini');
-	} catch(Exception $e) {
-		# ignore ...
-	}
-	$CONFIGURATION = array_merge($CONFIGURATION, $local_conf);
+    global $CONFIGURATION;
+    $local_conf = array();
+    try {
+        $settings = "local_settings.ini";
+
+        if($_SESSION['settings']) {
+            $settings = $_SESSION['settings'];
+        }
+        $local_conf = parse_ini_file('../../conf/' . $settings);
+
+    } catch(Exception $e) {
+        # ignore ...
+    }
+    $CONFIGURATION = array_merge($CONFIGURATION, $local_conf);
 }
+
+
 
 # run it upon inclusion
 parseLocalConf();
