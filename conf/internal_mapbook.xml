@@ -117,7 +117,7 @@
 	<map-source name="presidential_election_2014_v2" type="mapserver" projection="EPSG:4326">
 	<file>./demo/parcels/presidential_election_2014_v2.map</file>
 		<param name="format" value="image/png"/>
-		<layer name="presidential_election_2014_v2" status="on"/>
+		<layer name="presidential_election_2014_v2" status="off"/>
 	</map-source>
 
 	<map-source name="legislative_election_2015" type="mapserver" projection="EPSG:4326">
@@ -234,12 +234,20 @@
     <url>http://cloud.cnr.gob.sv/ArcGIS/services/SVWGS84/MapOficial/mapserver/WMSServer/</url>
     <layer name="1"/>
     <layer name="2"/>
-    <layer name="3"/>
+    <layer name="3" status="on"/>
     <layer name="5"/>
     <layer name="6"/>
     <layer name="7"/>
+    <layer name="9"/>
+    <layer name="10"/>
     <layer name="11"/>
     <layer name="12"/>
+    <layer name="14"/>
+    <layer name="15"/>
+    <layer name="16"/>
+    <layer name="18"/>
+    <layer name="19"/>
+    <layer name="20"/>
 	</map-source>
 	<map-source name="RelieveOficial" type="wms" tiled="false" projection="EPSG:4326">
     <url>http://cloud.cnr.gob.sv/ArcGIS/services/SVWGS84/RelieveOficial/mapserver/WMSServer/</url>
@@ -423,25 +431,39 @@
 		The catalog defines how the layers will be displayed in the catalog tab.
 	-->
 	<catalog>
-		<group title="Elecciones" expand="true">
-      <group title="2014" expand="true">
-        <group title="Presidenciales" expand="true">
-          <layer title="Primera vuelta - mayor cantidad de votos" src="presidential_election_2014_v1/presidential_election_2014_v1" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
-          <layer title="Segunda vuelta - mayor cantidad de votos" src="presidential_election_2014_v2/presidential_election_2014_v2" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
-        </group>
+    <!-- CAPAS CNR -->
+		<group title="Capas CNR" expand="true">
+      <group title="Límites">
+        <layer title="Departamentos" src="MapOficial/3" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Municipios" src="MapOficial/2" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Cantones" src="MapOficial/1" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
       </group>
-      <group title="2015" expand="false">
-        <group title="Asamblea" expand="false">
-          <layer title="Sectores" src="legislative_election_2015/legislative_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
-        </group>
-        <group title="Municipales" expand="false">
-          <layer title="Sectores" src="municipal_election_2015/municipal_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
-        </group>
-        <group title="Parlamento" expand="false">
-          <layer title="Sectores" src="parliament_election_2015/parliament_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
-        </group>
+      <group title="Cabeceras" expand="false">
+        <layer title="Departamentales" src="MapOficial/20" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Municipales" src="MapOficial/19" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Cantonales" src="MapOficial/18" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
       </group>
-		</group>
+      <group title="Transporte" expand="false">
+        <layer title="Vía férrea" src="MapOficial/9" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Vías a mayor escala" src="MapOficial/10" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Vías nacionales" src="MapOficial/11" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <group title="Relieve Nacional" expand="false">
+        <layer title="Volcanes" src="MapOficial/14" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Elementos costeros" src="MapOficial/15" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Cerros" src="MapOficial/16" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Elevaciones" src="RelieveOficial/1" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Relieve Nacional" src="RelieveOficial/0" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <group title="Hidrografía nacional" expand="false">
+        <layer title="Rios" src="RelieveOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Rios importantes" src="MapOficial/5" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Lagos, lagunas y embalses" src="MapOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <layer title="Áreas urbanas" src="MapOficial/7" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      <layer title="Puertos, aeropuertos y fronteras" src="MapOficial/12" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+    </group>
+    <!-- FIN CAPAS CNR -->
     <!-- CAPAS MINSAL -->
 		<group title="Capas MINSAL" expand="false">
   		<group title="Nivel administrativo">
@@ -476,23 +498,27 @@
 			<layer title="Almacenes" src="almacenes/almacenes" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
 		</group>
     <!-- FIN CAPAS MINSAL -->
-    <!-- CAPAS CNR -->
-		<group title="Capas CNR" expand="false">
-      <layer title="Departamentos" src="MapOficial/3" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Municipios" src="MapOficial/2" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Cantones" src="MapOficial/1" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Vías nacionales" src="MapOficial/11" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Áreas urbanas" src="MapOficial/7" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Rios" src="RelieveOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Rios importantes" src="MapOficial/5" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Lagos, lagunas y embalses" src="MapOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Puertos, aeropuertos y fronteras" src="MapOficial/12" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <group title="Relieve Nacional">
-        <layer title="Elevaciones" src="RelieveOficial/1" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-        <layer title="Relieve Nacional" src="RelieveOficial/0" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+    <!-- CAPAS ELECCIONES -->
+		<group title="Elecciones" expand="false">
+      <group title="2014" expand="false">
+        <group title="Presidenciales" expand="false">
+          <layer title="Primera vuelta - mayor cantidad de votos" src="presidential_election_2014_v1/presidential_election_2014_v1" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+          <layer title="Segunda vuelta - mayor cantidad de votos" src="presidential_election_2014_v2/presidential_election_2014_v2" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
       </group>
-    </group>
-    <!-- FIN CAPAS CNR -->
+      <group title="2015" expand="false">
+        <group title="Asamblea" expand="false">
+          <layer title="Sectores" src="legislative_election_2015/legislative_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+        <group title="Municipales" expand="false">
+          <layer title="Sectores" src="municipal_election_2015/municipal_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+        <group title="Parlamento" expand="false">
+          <layer title="Sectores" src="parliament_election_2015/parliament_election_2015" popups="true" show-legend="true" minscale="0" metadata="false" refresh="true" />
+        </group>
+      </group>
+		</group>
+    <!-- FIN CAPAS ELECCIONES -->
 		<group title="Mapa de google" expand="false" multiple="false">
 			<layer title="Google Streets" src="google_streets/all" legend="false" fade="false" unfade="false"/>
 			<layer title="Google Physical" src="google_physical/all" legend="false" fade="false" unfade="false"/>

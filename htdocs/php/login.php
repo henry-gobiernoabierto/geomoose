@@ -3,7 +3,7 @@
   $error = false;
 
   if( isset($_POST['username']) ) {
-    $db = pg_connect( "host=127.0.0.1 port=5432 dbname=mapserver user=postgres"  );
+    $db = pg_connect( "port=5432 dbname=mapserver user=postgres"  );
     if(!$db){
       $error = true;
       $message = "No se pudo conectar a la base de datos";

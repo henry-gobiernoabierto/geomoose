@@ -111,19 +111,19 @@
 	<!-- MINSAL -->
 	<map-source name="hospitalesb" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalesb.map</url>
-	        <layer name="hospitalesb" status="on"/>
+	        <layer name="hospitalesb" status="off"/>
 	</map-source>
 	<map-source name="hospitalesd" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalesd.map</url>
-	        <layer name="hospitalesd" status="on"/>
+	        <layer name="hospitalesd" status="off"/>
 	</map-source>
 	<map-source name="hospitalesr" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalesr.map</url>
-	        <layer name="hospitalesr" status="on"/>
+	        <layer name="hospitalesr" status="off"/>
 	</map-source>
 	<map-source name="hospitalese" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/hospitalese.map</url>
-	        <layer name="hospitalese" status="on"/>
+	        <layer name="hospitalese" status="off"/>
 	</map-source>
 	<map-source name="ucsfb" type="wms" tiled="false" projection="EPSG:4326">
 	        <url>http://geo.salud.gob.sv/cgi-bin/mapserv?MAP=/var/www/geo/geo/maps/minsal/establecimientos/ucsfb.map</url>
@@ -204,12 +204,20 @@
     <url>http://cloud.cnr.gob.sv/ArcGIS/services/SVWGS84/MapOficial/mapserver/WMSServer/</url>
     <layer name="1"/>
     <layer name="2"/>
-    <layer name="3"/>
+    <layer name="3" status="on"/>
     <layer name="5"/>
     <layer name="6"/>
     <layer name="7"/>
+    <layer name="9"/>
+    <layer name="10"/>
     <layer name="11"/>
     <layer name="12"/>
+    <layer name="14"/>
+    <layer name="15"/>
+    <layer name="16"/>
+    <layer name="18"/>
+    <layer name="19"/>
+    <layer name="20"/>
 	</map-source>
 	<map-source name="RelieveOficial" type="wms" tiled="false" projection="EPSG:4326">
     <url>http://cloud.cnr.gob.sv/ArcGIS/services/SVWGS84/RelieveOficial/mapserver/WMSServer/</url>
@@ -393,15 +401,48 @@
 		The catalog defines how the layers will be displayed in the catalog tab.
 	-->
 	<catalog>
+    <!-- CAPAS CNR -->
+		<group title="Capas CNR" expand="true">
+      <group title="Límites">
+        <layer title="Departamentos" src="MapOficial/3" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Municipios" src="MapOficial/2" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Cantones" src="MapOficial/1" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <group title="Cabeceras" expand="false">
+        <layer title="Departamentales" src="MapOficial/20" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Municipales" src="MapOficial/19" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Cantonales" src="MapOficial/18" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <group title="Transporte" expand="false">
+        <layer title="Vía férrea" src="MapOficial/9" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Vías a mayor escala" src="MapOficial/10" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Vías nacionales" src="MapOficial/11" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <group title="Relieve Nacional" expand="false">
+        <layer title="Volcanes" src="MapOficial/14" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Elementos costeros" src="MapOficial/15" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Cerros" src="MapOficial/16" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Elevaciones" src="RelieveOficial/1" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Relieve Nacional" src="RelieveOficial/0" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <group title="Hidrografía nacional" expand="false">
+        <layer title="Rios" src="RelieveOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Rios importantes" src="MapOficial/5" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+        <layer title="Lagos, lagunas y embalses" src="MapOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      </group>
+      <layer title="Áreas urbanas" src="MapOficial/7" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+      <layer title="Puertos, aeropuertos y fronteras" src="MapOficial/12" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
+    </group>
+    <!-- FIN CAPAS CNR -->
     <!-- CAPAS MINSAL -->
-		<group title="Capas MINSAL">
-  		<group title="Nivel administrativo">
+		<group title="Capas MINSAL" expand="false">
+  		<group title="Nivel administrativo" expand="false">
   			<layer title="Nivel superior" src="oficinas/oficinas" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
   			<layer title="Direcciones Regionales" src="regionales/regionales" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
   			<layer title="Sistemas Básicos de Salud Integral" src="sibasis/sibasis" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
 		  </group>
-  		<group title="Establecimientos">
-        <group title="Hospitales nacionales" expand="true">
+  		<group title="Establecimientos" expand="false">
+        <group title="Hospitales nacionales" expand="false">
     			<layer title="Hospitales básicos" src="hospitalesb/hospitalesb" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
     			<layer title="Hospitales departamentales" src="hospitalesd/hospitalesd" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
     			<layer title="Hospitales regionales" src="hospitalesr/hospitalesr" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
@@ -427,23 +468,6 @@
 			<layer title="Almacenes" src="almacenes/almacenes" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
 		</group>
     <!-- FIN CAPAS MINSAL -->
-    <!-- CAPAS CNR -->
-		<group title="Capas CNR" expand="false">
-      <layer title="Departamentos" src="MapOficial/3" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Municipios" src="MapOficial/2" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Cantones" src="MapOficial/1" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Vías nacionales" src="MapOficial/11" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Áreas urbanas" src="MapOficial/7" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Rios" src="RelieveOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Rios importantes" src="MapOficial/5" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Lagos, lagunas y embalses" src="MapOficial/6" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <layer title="Puertos, aeropuertos y fronteras" src="MapOficial/12" popups="false" legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      <group title="Relieve Nacional">
-        <layer title="Elevaciones" src="RelieveOficial/1" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-        <layer title="Relieve Nacional" src="RelieveOficial/0" popups="false" legend="false" show-legend="false" minscale="0" metadata="false" refresh="true" fade="false" unfade="false"/>
-      </group>
-    </group>
-    <!-- FIN CAPAS CNR -->
 		<group title="Mapa de google" expand="false" multiple="false">
 			<layer title="Google Streets" src="google_streets/all" legend="false" fade="false" unfade="false"/>
 			<layer title="Google Physical" src="google_physical/all" legend="false" fade="false" unfade="false"/>
